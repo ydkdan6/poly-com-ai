@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom'; // Removed for compatibility
+import { useNavigate } from 'react-router-dom'; 
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,7 +26,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const { signIn, signUp } = useAuth();
-  // const navigate = useNavigate(); // Removed for compatibility
+  const navigate = useNavigate(); 
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
