@@ -50,15 +50,22 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-chat-background">
+    <div className="min-h-screen" style={{ background: 'var(--gradient-subtle)' }}>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
+      
       {/* Header */}
-      <header className="bg-background border-b shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+      <header className="glass-card shadow-elegant border-b-0 relative z-10">
+        <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <GraduationCap className="h-8 w-8 text-primary" />
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-primary/20 animate-glow"></div>
+                <GraduationCap className="h-10 w-10 text-primary relative z-10" />
+              </div>
               <div>
-                <h1 className="text-xl font-bold">Computer Science Department</h1>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Computer Science Department
+                </h1>
                 <p className="text-sm text-muted-foreground">Kaduna Polytechnic</p>
               </div>
             </div>
@@ -66,7 +73,12 @@ const Index = () => {
               <span className="text-sm text-muted-foreground">
                 Welcome, {user.email}
               </span>
-              <Button variant="outline" size="sm" onClick={handleSignOut}>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleSignOut}
+                className="glass-card btn-modern transition-smooth hover:shadow-elegant"
+              >
                 <LogOut className="h-4 w-4 mr-2" />
                 Sign Out
               </Button>
@@ -76,36 +88,58 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <main className="container mx-auto px-4 py-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Quick Info Cards */}
-          <div className="lg:col-span-1 space-y-4">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5" />
+          <div className="lg:col-span-1 space-y-6 animate-slide-up">
+            <Card className="glass-card shadow-elegant transition-smooth hover:shadow-glow">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <MessageCircle className="h-5 w-5 text-primary" />
+                  </div>
                   Quick Help
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2">
+              <CardContent className="space-y-3">
                 <p className="text-sm text-muted-foreground">
                   Ask questions about:
                 </p>
-                <ul className="text-sm space-y-1 text-muted-foreground">
-                  <li>• Admission requirements</li>
-                  <li>• Course programs</li>
-                  <li>• School fees</li>
-                  <li>• Academic calendar</li>
-                  <li>• Department facilities</li>
-                  <li>• Career opportunities</li>
+                <ul className="text-sm space-y-2 text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    Admission requirements
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    Course programs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    School fees
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    Academic calendar
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    Department facilities
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    Career opportunities
+                  </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Users className="h-5 w-5" />
+            <Card className="glass-card shadow-elegant transition-smooth hover:shadow-glow">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Users className="h-5 w-5 text-primary" />
+                  </div>
                   Department Info
                 </CardTitle>
               </CardHeader>
@@ -116,24 +150,32 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <BookOpen className="h-5 w-5" />
+            <Card className="glass-card shadow-elegant transition-smooth hover:shadow-glow">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <BookOpen className="h-5 w-5 text-primary" />
+                  </div>
                   Programs Offered
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="text-sm space-y-1">
-                  <li>• National Diploma (ND)</li>
-                  <li>• Higher National Diploma (HND)</li>
+                <ul className="text-sm space-y-2">
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    National Diploma (ND)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                    Higher National Diploma (HND)
+                  </li>
                 </ul>
               </CardContent>
             </Card>
           </div>
 
           {/* Chat Interface */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 animate-fade-in">
             <ChatInterface />
           </div>
         </div>

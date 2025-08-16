@@ -152,53 +152,54 @@ const ChatInterface = () => {
   };
 
   return (
-    <Card className="flex flex-col h-[600px] w-full max-w-4xl mx-auto">
-      <div className="flex items-center gap-3 p-4 border-b">
-        <Avatar className="h-10 w-10">
-          <AvatarFallback className="bg-primary text-primary-foreground">
-            <Bot className="h-5 w-5" />
+    <Card className="flex flex-col h-[650px] w-full max-w-4xl mx-auto glass-card shadow-elegant transition-smooth hover:shadow-glow">
+      <div className="flex items-center gap-4 p-6 border-b border-border/50">
+        <Avatar className="h-12 w-12 shadow-elegant">
+          <AvatarFallback className="gradient-primary">
+            <Bot className="h-6 w-6" />
           </AvatarFallback>
         </Avatar>
         <div>
-          <h3 className="font-semibold">CS Department Assistant</h3>
+          <h3 className="font-bold text-lg">CS Department Assistant</h3>
           <p className="text-sm text-muted-foreground">
             AI-powered support for Kaduna Polytechnic students
           </p>
         </div>
       </div>
 
-      <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
-        <div className="space-y-4">
-          {messages.map((message) => (
+      <ScrollArea className="flex-1 p-6" ref={scrollAreaRef}>
+        <div className="space-y-6">
+          {messages.map((message, index) => (
             <div
               key={message.id}
-              className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              className={`flex gap-4 animate-fade-in ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {message.role === 'assistant' && (
-                <Avatar className="h-8 w-8 shrink-0">
-                  <AvatarFallback className="bg-primary text-primary-foreground">
-                    <Bot className="h-4 w-4" />
+                <Avatar className="h-10 w-10 shrink-0 shadow-elegant">
+                  <AvatarFallback className="gradient-primary">
+                    <Bot className="h-5 w-5" />
                   </AvatarFallback>
                 </Avatar>
               )}
               
               <div
-                className={`max-w-[80%] rounded-lg px-3 py-2 ${
+                className={`max-w-[85%] rounded-xl px-4 py-3 transition-smooth ${
                   message.role === 'user'
-                    ? 'bg-chat-user-message text-chat-user-message-foreground'
-                    : 'bg-chat-ai-message text-chat-ai-message-foreground border'
+                    ? 'bg-chat-user-message text-chat-user-message-foreground shadow-elegant'
+                    : 'glass-card text-chat-ai-message-foreground border border-border/50'
                 }`}
               >
-                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                <p className="text-xs opacity-70 mt-1">
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                <p className="text-xs opacity-60 mt-2">
                   {message.timestamp.toLocaleTimeString()}
                 </p>
               </div>
 
               {message.role === 'user' && (
-                <Avatar className="h-8 w-8 shrink-0">
+                <Avatar className="h-10 w-10 shrink-0 shadow-elegant">
                   <AvatarFallback className="bg-secondary text-secondary-foreground">
-                    <User className="h-4 w-4" />
+                    <User className="h-5 w-5" />
                   </AvatarFallback>
                 </Avatar>
               )}
@@ -206,15 +207,15 @@ const ChatInterface = () => {
           ))}
           
           {loading && (
-            <div className="flex gap-3 justify-start">
-              <Avatar className="h-8 w-8 shrink-0">
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  <Bot className="h-4 w-4" />
+            <div className="flex gap-4 justify-start animate-fade-in">
+              <Avatar className="h-10 w-10 shrink-0 shadow-elegant">
+                <AvatarFallback className="gradient-primary">
+                  <Bot className="h-5 w-5" />
                 </AvatarFallback>
               </Avatar>
-              <div className="bg-chat-ai-message text-chat-ai-message-foreground border rounded-lg px-3 py-2">
-                <div className="flex items-center gap-2">
-                  <Loader2 className="h-4 w-4 animate-spin" />
+              <div className="glass-card border border-border/50 rounded-xl px-4 py-3">
+                <div className="flex items-center gap-3">
+                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
                   <span className="text-sm">Thinking...</span>
                 </div>
               </div>
@@ -223,17 +224,22 @@ const ChatInterface = () => {
         </div>
       </ScrollArea>
 
-      <div className="p-4 border-t">
-        <div className="flex gap-2">
+      <div className="p-6 border-t border-border/50">
+        <div className="flex gap-3">
           <Input
             placeholder="Type your message about Computer Science department..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={handleKeyPress}
             disabled={loading}
+            className="glass-card transition-smooth focus:shadow-glow border-border/50"
           />
-          <Button onClick={sendMessage} disabled={loading || !input.trim()}>
-            <Send className="h-4 w-4" />
+          <Button 
+            onClick={sendMessage} 
+            disabled={loading || !input.trim()}
+            className="btn-modern gradient-primary shadow-elegant hover:shadow-glow transition-smooth"
+          >
+            <Send className="h-5 w-5" />
           </Button>
         </div>
       </div>
