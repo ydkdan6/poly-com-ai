@@ -85,11 +85,16 @@ When answering questions, prioritize information from the FAQ database above. If
       body: JSON.stringify({
         contents: [
           {
+            role: 'user',
             parts: [
               { text: `${systemPrompt}\n\nUser: ${message}` }
             ]
           }
-        ]
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 1024,
+        }
       }),
     });
 
