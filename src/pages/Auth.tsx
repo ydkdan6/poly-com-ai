@@ -45,7 +45,7 @@ const Auth = () => {
           title: 'Welcome back!',
           description: 'You have successfully signed in.',
         });
-        // navigate('/'); // Removed for compatibility
+        navigate('/'); 
         console.log('Navigation to home page would happen here');
       }
     } catch (error) {
